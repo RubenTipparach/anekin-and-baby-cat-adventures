@@ -18,17 +18,17 @@ func _physics_process(delta):
 	
 	# Left and Right Movement
 	if Input.is_action_pressed("cat_left"):
-		print("left")
+		#print("left")
 		velocity.x = -speed * delta
 	elif Input.is_action_pressed("cat_right"):
-		print("right")
+		#print("right")
 		velocity.x = speed * delta
 	else:
 		velocity.x = 0
 	
 	# Jump
 	if Input.is_action_just_pressed("cat_jump") and is_on_floor():
-		print("jumped")
+		#print("jumped")
 		velocity.y = jump_strength
 		
 	#gravity = 1
@@ -37,5 +37,4 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	
 	# Move the character
-	# move_and_slide(velocity, Vector2.UP)
 	move_and_slide()
