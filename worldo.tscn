@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2t55ajt2ugni"]
+[gd_scene load_steps=10 format=3 uid="uid://d2t55ajt2ugni"]
 
-[ext_resource type="Script" path="res://CatCamera.gd" id="1_7gp6i"]
 [ext_resource type="TileSet" uid="uid://co7y5y7th2uew" path="res://anakin_tiels.tres" id="2_44ar8"]
 [ext_resource type="Texture2D" uid="uid://pd6vncmfjkpy" path="res://icon.svg" id="2_144n0"]
 [ext_resource type="Texture2D" uid="uid://daq5bbt6xrvrc" path="res://anakin_man.png" id="3_doh7y"]
-[ext_resource type="Script" path="res://PlayerCat.gd" id="3_w7ma1"]
+[ext_resource type="Script" path="res://Scripts/PlayerCat.gd" id="3_v44t1"]
+[ext_resource type="Script" path="res://Scripts/CatCamera.gd" id="5_l060g"]
+[ext_resource type="Texture2D" uid="uid://dkv614rxm2e1x" path="res://gun.png" id="5_ngwyw"]
+[ext_resource type="Script" path="res://Scripts/Gun.gd" id="6_3pu7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jun5f"]
 size = Vector2(138, 132)
@@ -52,7 +54,7 @@ floor_constant_speed = true
 floor_max_angle = 1.22173
 floor_snap_length = 2.0
 platform_floor_layers = 4193581761
-script = ExtResource("3_w7ma1")
+script = ExtResource("3_v44t1")
 speed = 40000
 jump_strength = -1000
 gravity = 2000
@@ -65,12 +67,18 @@ texture = ExtResource("3_doh7y")
 scale = Vector2(7.43, 8.67)
 shape = SubResource("RectangleShape2D_gk8gy")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Gun" type="Sprite2D" parent="Anekin_CAT"]
+position = Vector2(108, 33)
+scale = Vector2(3, 3)
+texture = ExtResource("5_ngwyw")
+script = ExtResource("6_3pu7a")
+
+[node name="BulletSpawnPoint" type="Node2D" parent="Anekin_CAT/Gun"]
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(464, -546)
 zoom = Vector2(0.5, 0.5)
-script = ExtResource("1_7gp6i")
+script = ExtResource("5_l060g")
 player = NodePath("../Anekin_CAT")
 deadzone = Vector2(100, 100)
 followSpeed = 20.0
